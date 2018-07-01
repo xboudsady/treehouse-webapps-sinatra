@@ -1,5 +1,15 @@
-require "sinatra"               # Load Sinatra
+require "sinatra"                       # Load Sinatra
 
-get("/apple") do                # Path to our request
-    "Here's a juicy apple!"
+#set :bind, "0.0.0.0"                   # Allows sinatra to be loaded in other network outside localhost
+
+get("/apple") do                        # Path to our request
+    "<h1>Here's a juicy apple!</h1>"
+end
+
+get("/banana") do
+    "<h1>Here's a ripe banana!</h1>"
+end
+
+get("/carrot") do
+    "<h1>Here's a crunchy carrot!</h1>"
 end
