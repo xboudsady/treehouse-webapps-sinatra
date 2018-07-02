@@ -12,6 +12,8 @@ get "/" do                          # Root path
     erb :welcome                    # render the welcome.erb from our /views folder
 end
 
-get "/:title" do                    # Get url path parameter
-    page_content(params[:title])    # Call the page_content(), passing in the .txt file to be read
+get "/:title" do                        # Get url path parameter
+    @title = params[:title]             # Asign the params[:title] to a new instance variable
+    @content = page_content(@title)     # Call the page_content(), passing in the .txt file to be read
+    erb :show                           # Render an erb template
 end
