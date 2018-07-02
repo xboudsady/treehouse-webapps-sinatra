@@ -34,6 +34,13 @@ get "/:title" do                        # Get url path parameter
 end
 
 
+get "/:title/edit" do                   # Route to the views/edit.erb fle
+    @title = params[:title]             # Pass in the title params
+    @content = page_content(@title)     # Load the content using page_content()
+    erb :edit                           # Loads the view edit.erb
+end
+
+
 post "/create" do 
     save_content(params["title"], params["content"])    # Since the output string is a hash key that matches our save_content() arguements, we pass those values 
     redirect URI.escape("/#{params["title"]}")          # Sinatra has a redirect to redirect after form submission, which is the page view based of /pages/:title. Added the URI.escape() to encoude the path for spaces and unique characters
