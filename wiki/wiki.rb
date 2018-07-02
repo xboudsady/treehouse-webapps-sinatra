@@ -16,6 +16,10 @@ def save_content(title, content)                        # First argument holds p
     end
 end
 
+def delete_content(title)                               # Delete content method
+    File.delete("Pages/#{title}.txt")                   # Ruby core File.delete method, passing in the matching @title
+end
+
 
 # ===== ROUTES =====
 
@@ -52,3 +56,8 @@ put "/:title" do                                        # Use put to route for u
     redirect URI.escape("/#{params["title"]}")          # Adde URI.escape() to encode the url path
 end
 
+
+delete "/:title" do                                     # Delete method, with matching route
+    delete_content(params[:title])                      # Call deelte method, passing in matching path
+    redirect "/"                                        # Redirect to main page
+end 
