@@ -46,3 +46,9 @@ post "/create" do
     redirect URI.escape("/#{params["title"]}")          # Sinatra has a redirect to redirect after form submission, which is the page view based of /pages/:title. Added the URI.escape() to encoude the path for spaces and unique characters
 end
 
+
+put "/:title" do                                        # Use put to route for updating 
+    save_content(params["title"], params["content"])    # Call the save_content() to save page
+    redirect URI.escape("/#{params["title"]}")          # Adde URI.escape() to encode the url path
+end
+
