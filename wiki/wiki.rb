@@ -3,6 +3,9 @@ require "uri"                           # Encode the redirect path, handles spac
 
 set :bind, "0.0.0.0"                    # Allow remote access outside of localhost
 
+def h(string)
+    Rack::Utils.escape_html(string)     # Escape any html code that appears on page e.g. <script>
+end
 
 def page_content(title)                 # Loads the content of a text file, return them as a string
     File.read("pages/#{title}.txt")     # File is a sublass of the IO class, File inherits a class method named read. File.read() lets you read the contents of a file into a string, using only the file name.
